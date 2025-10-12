@@ -24,6 +24,14 @@ import HeaderLink from '../../components/HeaderLink.astro';
 	Embedded component in MDX
 </HeaderLink>
 
+import MyReactComponent from '../../components/MyReactComponent';
+import MyVueComponent from '../../components/MyVueComponent.vue';
+
+<MyReactComponent client:load />
+
+<MyVueComponent client:load />
+
+
 ## More Links
 
 - [MDX Syntax Documentation](https://mdxjs.com/docs/what-is-mdx)
