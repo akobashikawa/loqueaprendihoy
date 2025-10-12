@@ -10,7 +10,7 @@ tags:
 1, 2, 3, probando...
 
 ![](../../assets/icons8-courage.png)
-- [second-post](second-post.md)
+- [astro-obsidian-en-netlify](astro-obsidian-en-netlify.md)
 - [third-post](third-post.md)
 
 ![](../../images/icons8-super_hero_female.png)
