@@ -13,7 +13,7 @@ tags:
 
 - [Obsidian - Sharpen your thinking](https://obsidian.md/)
 - Obsidian permite desarrollar un "segundo cerebro".
-	- Un sistema de anotación donde las notas se independizan y se van relacionando orgánicamente.
+	- Un **sistema de anotación** donde las notas se pueden independizar e ir relacionando orgánicamente.
 - Eventualmente, se llega a material que se puede compartir con otras personas.
 - Las notas se almacenan en archivos markdown.
 - Maneja tags.
@@ -23,7 +23,7 @@ tags:
 ## Astro
 
 - [Astro](https://astro.build/)
-- Astro es un framework que permite publicar sites de contenido.
+- Astro es un **framework** que permite publicar sites de contenido.
 - El contenido se puede almacenar en archivos markdown.
 	- Además de html
 - Puede manejar tags.
@@ -47,7 +47,7 @@ tags:
 
 ## Estrategia
 
-- Crear un vault obsidian
+- Crear un **vault obsidian**
   - Configurarlo para aumentar su compatibilidad con astro
 	- Files and links
 		- Default Location for new notes: Same folder as current file
@@ -55,21 +55,23 @@ tags:
 		- Use [[Wikilinks]]: NO
 		- Default location for new attachments: In the folder specified below.
 		- Attachment folder path: `astro/images` (para imágenes estáticas que no serán procesadas por Astro).
-- Crear un proyecto astro del tipo blog
+- Crear un **proyecto astro del tipo blog**
 	- Ya tiene una configuración de ejemplo que funciona para blogging.
 	- Tener un content que apunte a una carpeta de contenido de un vault de obsidian
 	- Tener un assets que apunte a una carpeta de assets de un vault de obsidian
 
-## Configuración
+## Tecnología
 
-Este proyecto utiliza una configuración que permite usar una bóveda de Obsidian como fuente de contenido para un sitio web de Astro. Aquí se detallan algunos aspectos técnicos importantes.
+Se utiliza una configuración que permite usar un *vault* (bóveda) de Obsidian para facilitar la edición del contenido para un sitio web de Astro.
+
+Aquí se detallan algunos aspectos técnicos importantes.
 
 ### Astro + Obsidian
 - [akobashikawa/astro-obsidian: Integrando astro para usarlo con obsidian](https://github.com/akobashikawa/astro-obsidian)
 - El repositorio está organizado en dos directorios principales:
 	-   `loqueaprendihoy/`: Contiene el proyecto de Astro (el sitio web).
 	-   `loqueaprendihoy-vault/`: Contiene la bóveda de Obsidian (el contenido).
-- Para que Astro pueda acceder al contenido de la bóveda, se están utilizando enlaces simbólicos. 
+- Para que obsidian pueda acceder al contenido de astro, se están utilizando enlaces simbólicos. 
 	- `loqueaprendihoy-vault/astro/content` es un enlace simbólico a `loqueaprendihoy/src/content`
 	- `loqueaprendihoy-vault/astro/assets` es un enlace simbólico a `loqueaprendihoy/src/assets`
 		- **Uso:** Para imágenes que quieres que Astro optimice (compresión, generación de formatos modernos, etc.). Ideal para imágenes de contenido como `heroImage` en el frontmatter.
@@ -91,13 +93,13 @@ mklink /D assets \loqueaprendihoy\src\assets
 mkdir \loqueaprendihoy\public\images
 mklink /D images \loqueaprendihoy\public\images
 ```
-- Files and Links
+- Plugin **Files and Links**
 	- New link format: Relative path to file
 		- Previene que recorte la ruta del link
 	- Use Wikilinks: NO
 	- Default location for file attachments: In the folder specified below
 	- Attachment folder path: loqueaprendihoy/images
-- Tag Folder
+- Plugin **Tag Folder**
 	- Always Open: YES
 	- Files
 		- Use title: NO
@@ -111,14 +113,14 @@ mklink /D images \loqueaprendihoy\public\images
 ### Configurando Astro
 
 - rehype-mermaid
-	- Permite visualizar gráficos hechos con mermaid code
+	- Permite visualizar gráficos hechos con **mermaid** code
 - rehype-katex
-	- Para visualizar fórmulas matemáticas latex
+	- Para visualizar **fórmulas matemáticas latex**
 - remark-math
-	- Para visualizar fórmulas matemáticas latex
+	- Para visualizar **fórmulas matemáticas latex**
 - katex
 	- requerido por rehype-katex
-- playwright-core (compatible con netlify)
+- playwright-core (compatible con **netlify**)
 	- requerido por rehype-katex
 - plugins/remark-obsidian-links.js
 	- plugin adhoc para las conversiones de enlaces y urls de imágenes
@@ -274,7 +276,7 @@ export default defineConfig({
 #### src\content.config.ts
 
 - Indica la carga de los archivos md y mdx, su esquema, etc
-- Aunque probé ObsidianMdLoader recomendado, me fue mejor con el glob por default.
+- Aunque probé `ObsidianMdLoader` recomendado, me fue mejor con el `glob` por default.
 ```js
 import { defineCollection, z } from 'astro:content';
 // import { ObsidianDocumentSchema, ObsidianMdLoader } from "astro-loader-obsidian";
@@ -308,24 +310,24 @@ export const collections = { blog };
 
 ### Despliegue básico
 
-- Creo el proyecto akc-loqueaprendihoy
+- Creo el proyecto `akc-loqueaprendihoy`
 	- Indico que deseo importar el repositorio de github
 - Acepto las opciones de despliegue por default
-	- npm run build
-	- tomar el resultado de la carpeta build
+	- `npm run build`
+	- tomar el resultado de la carpeta `dist`
 - Esto permitirá obtener https://akc-loqueaprendihoy.netlify.app/
 
 ### Custom domain
 
 - Domain management
 	- Production domain
-		- loqueaprendihoy.akcstudio.com
+		- `loqueaprendihoy.akcstudio.com`
 	- HTTPS
 		- SSL/TSL certificate
 			- Verify: OK
-			- Letsencrypt: requested (puede tardar, chequear en 24h)
-- Tengo el DNS manager DigitalOcean:
+			- **Letsencrypt**: requested (puede tardar, chequear en 24h)
+- Tengo el DNS manager en **DigitalOcean**:
 	- DNS akcstudio.com
-		- CNAME
-			- loqueaprendihoy.akcstudio.com
-			- is alias of akc-loqueaprendihoy.netlify.app
+		- **CNAME**
+			- `loqueaprendihoy.akcstudio.com`
+			- is alias of `akc-loqueaprendihoy.netlify.app`
