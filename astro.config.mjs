@@ -7,8 +7,8 @@ import react from '@astrojs/react';
 import vue from '@astrojs/vue';
 
 import rehypeMermaid from 'rehype-mermaid';
-// import remarkMath from 'remark-math';
-// import rehypeKatex from 'rehype-katex';
+import remarkMath from 'remark-math';
+import rehypeKatex from 'rehype-katex';
 import remarkObsidianLinks from './src/plugins/remark-obsidian-links';
 
 
@@ -23,11 +23,11 @@ export default defineConfig({
         },
         rehypePlugins: [
         	rehypeMermaid,
-        // 	rehypeKatex
+        	rehypeKatex
         ],
         remarkPlugins: [
         	remarkObsidianLinks,
-        // 	remarkMath
+        	remarkMath
         ]
     }
 });
