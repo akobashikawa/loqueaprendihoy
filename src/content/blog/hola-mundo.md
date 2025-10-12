@@ -1,5 +1,5 @@
 ---
-title: Hola Mundo
+title: ¡Hola Mundo!
 description: Primer post
 pubDate: 2025/10/12
 heroImage: '@/assets/blog-placeholder-1.jpg'
@@ -7,7 +7,7 @@ tags:
   - reference
 ---
 
-Hola mundo!
+1, 2, 3, probando...
 
 ![](../../assets/icons8-courage.png)
 - [second-post](second-post.md)
