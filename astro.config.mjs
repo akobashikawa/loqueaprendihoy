@@ -9,7 +9,7 @@ import vue from '@astrojs/vue';
 // import rehypeMermaid from 'rehype-mermaid';
 // import remarkMath from 'remark-math';
 // import rehypeKatex from 'rehype-katex';
-// import remarkObsidianLinks from './src/plugins/remark-obsidian-links';
+import remarkObsidianLinks from './src/plugins/remark-obsidian-links';
 
 
 // https://astro.build/config
@@ -25,9 +25,9 @@ export default defineConfig({
         // 	rehypeMermaid,
         // 	rehypeKatex
         // ],
-        // remarkPlugins: [
-        // 	remarkObsidianLinks,
+        remarkPlugins: [
+        	remarkObsidianLinks,
         // 	remarkMath
-        // ]
+        ]
     }
 });
