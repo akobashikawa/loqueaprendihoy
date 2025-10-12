@@ -13,7 +13,7 @@ tags:
 
 - [Obsidian - Sharpen your thinking](https://obsidian.md/)
 - Obsidian permite desarrollar un "segundo cerebro".
-  - Un sistema de anotación donde las notas se independizan y se van relacionando orgánicamente.
+	- Un sistema de anotación donde las notas se independizan y se van relacionando orgánicamente.
 - Eventualmente, se llega a material que se puede compartir con otras personas.
 - Las notas se almacenan en archivos markdown.
 - Maneja tags.
@@ -25,38 +25,40 @@ tags:
 - [Astro](https://astro.build/)
 - Astro es un framework que permite publicar sites de contenido.
 - El contenido se puede almacenar en archivos markdown.
-  - Además de html
+	- Además de html
 - Puede manejar tags.
 - Tiene un amplio sistema de plugins.
 - Se puede usar libremente.
 - Se puede desplegar con relativa facilidad en diversos ambientes.
-  - Local
-  - Netlify
-  - Vercel
+	- Local
+	- Netlify
+	- Vercel
 
 ## Idea
+
 - Qué tal si usamos astro para publicar notas que podamos desarrollar y mantener fácilmente con obsidian.
 - Que funcione bien:
-  - Hacer links en obsidian que sean reconocidos en el site publicado en astro
-  - Copiar y pegar imagenes en obsidian que sea reconocidos en el site publicado en astro
-  - Que bloques especiales de obsidian sean reconocidos en el site publicado en astro
-    - code
-    - mermaid
-    - math
+	- Hacer links en obsidian que sean reconocidos en el site publicado en astro
+	- Copiar y pegar imagenes en obsidian que sea reconocidos en el site publicado en astro
+	- Que bloques especiales de obsidian sean reconocidos en el site publicado en astro
+		- code
+		- mermaid
+		- math
 
 ## Estrategia
+
 - Crear un vault obsidian
   - Configurarlo para aumentar su compatibilidad con astro
-    - Files and links
-      - Default Location for new notes: Same folder as current file
-      - New link format: Relative path to file
-      - Use [[Wikilinks]]: NO
-      - Default location for new attachments: In the folder specified below.
-      - Attachment folder path: `astro/images` (para imágenes estáticas que no serán procesadas por Astro).
+	- Files and links
+		- Default Location for new notes: Same folder as current file
+		- New link format: Relative path to file
+		- Use [[Wikilinks]]: NO
+		- Default location for new attachments: In the folder specified below.
+		- Attachment folder path: `astro/images` (para imágenes estáticas que no serán procesadas por Astro).
 - Crear un proyecto astro del tipo blog
-  - Ya tiene una configuración de ejemplo que funciona para blogging.
-  - Tener un content que apunte a una carpeta de contenido de un vault de obsidian
-  - Tener un assets que apunte a una carpeta de assets de un vault de obsidian
+	- Ya tiene una configuración de ejemplo que funciona para blogging.
+	- Tener un content que apunte a una carpeta de contenido de un vault de obsidian
+	- Tener un assets que apunte a una carpeta de assets de un vault de obsidian
 
 ## Configuración
 
@@ -70,16 +72,15 @@ Este proyecto utiliza una configuración que permite usar una bóveda de Obsidia
 - Para que Astro pueda acceder al contenido de la bóveda, se están utilizando enlaces simbólicos. 
 	- `loqueaprendihoy-vault/astro/content` es un enlace simbólico a `loqueaprendihoy/src/content`
 	- `loqueaprendihoy-vault/astro/assets` es un enlace simbólico a `loqueaprendihoy/src/assets`
-		  - **Uso:** Para imágenes que quieres que Astro optimice (compresión, generación de formatos modernos, etc.). Ideal para imágenes de contenido como `heroImage` en el frontmatter.
-		  - **Consideración:** El hot-reloading de Astro puede fallar si se renombra o elimina un archivo de esta carpeta desde Obsidian (por ejemplo, con el plugin "Paste image rename").
+		- **Uso:** Para imágenes que quieres que Astro optimice (compresión, generación de formatos modernos, etc.). Ideal para imágenes de contenido como `heroImage` en el frontmatter.
+		- **Consideración:** El hot-reloading de Astro puede fallar si se renombra o elimina un archivo de esta carpeta desde Obsidian (por ejemplo, con el plugin "Paste image rename").
 	- `loqueaprendihoy-vault/astro/images` es un enlace simbólico a `loqueaprendihoy/public/images`
-		  - **Uso:** Para imágenes estáticas que se servirán tal cual. Es la carpeta recomendada para los adjuntos automáticos de Obsidian.
-		  - **Consideración:** El hot-reloading funciona de manera fiable con esta carpeta.
+		- **Uso:** Para imágenes estáticas que se servirán tal cual. Es la carpeta recomendada para los adjuntos automáticos de Obsidian.
+		- **Consideración:** El hot-reloading funciona de manera fiable con esta carpeta.
 
 > **Flujo de trabajo recomendado:**
 > 1. Configura Obsidian para que guarde las imágenes en `astro/images`. La mayoría de tus imágenes vivirán aquí.
 > 2. Si necesitas que una imagen específica sea optimizada por Astro (por ejemplo, la imagen principal de un post), muévela manualmente de la carpeta `images` a `assets` y actualiza la ruta en tu archivo Markdown.
-
 
 ### Configurando Obsidian
 
@@ -106,20 +107,21 @@ mklink /D images \loqueaprendihoy\public\images
 		- Search tags inside TagFolder when clocking tags: YES
 	- Arrangements
 		- Merge redundant combinations: YES
+
 ### Configurando Astro
 
 - rehype-mermaid
-  - Permite visualizar gráficos hechos con mermaid code
+	- Permite visualizar gráficos hechos con mermaid code
 - rehype-katex
-  - Para visualizar fórmulas matemáticas latex
+	- Para visualizar fórmulas matemáticas latex
 - remark-math
-  - Para visualizar fórmulas matemáticas latex
+	- Para visualizar fórmulas matemáticas latex
 - katex
-  - requerido por rehype-katex
+	- requerido por rehype-katex
 - playwright-core (compatible con netlify)
-  - requerido por rehype-katex
+	- requerido por rehype-katex
 - plugins/remark-obsidian-links.js
-  - plugin adhoc para las conversiones de enlaces y urls de imágenes
+	- plugin adhoc para las conversiones de enlaces y urls de imágenes
 
 ```sh
 npx astro add react
@@ -130,7 +132,8 @@ npm install --save playwright-core
 npm install --save remark-math rehype-katex
 ```
 
-### package.json
+#### package.json
+
 ```json
 {
   "name": "loqueaprendihoy",
@@ -166,12 +169,14 @@ npm install --save remark-math rehype-katex
 
 ```
 
-### tsconfig.json
+#### tsconfig.json
+
 Para facilitar la importación de componentes desde los archivos de contenido (MDX), se ha configurado un alias de ruta en `loqueaprendihoy/tsconfig.json`:
 
-  `@/*` apunta a `loqueaprendihoy/src/*`
+`@/*` apunta a `loqueaprendihoy/src/*`
 
 Esto permite importar componentes de forma consistente, sin importar la profundidad del archivo de contenido.
+
 ```json
 {
   "extends": "astro/tsconfigs/strict",
@@ -196,7 +201,8 @@ Esto permite importar componentes de forma consistente, sin importar la profundi
 }
 ```
 
-### src\plugins\remark-obsidian-links.js
+#### src\plugins\remark-obsidian-links.js
+
 - Se encarga de corregir los enlaces de obsidian para que aparezcan correctamente publicados en astro.
 ```js
 import { visit } from 'unist-util-visit';
@@ -225,7 +231,9 @@ export default function remarkObsidianLinks() {
   };
 }
 ```
-### astro.config.mjs
+
+#### astro.config.mjs
+
 - Indica el soporte para mdx, react, vue, mermaid, math, etc
 ```js
 // @ts-check
@@ -263,7 +271,8 @@ export default defineConfig({
 });
 ```
 
-### src\content.config.ts
+#### src\content.config.ts
+
 - Indica la carga de los archivos md y mdx, su esquema, etc
 - Aunque probé ObsidianMdLoader recomendado, me fue mejor con el glob por default.
 ```js
@@ -292,11 +301,13 @@ export const collections = { blog };
 ```
 
 ## Repositorio en Github
+
 - [akobashikawa/loqueaprendihoy: Blog](https://github.com/akobashikawa/loqueaprendihoy)
 
 ## Desplegando en Netlify
 
 ### Despliegue básico
+
 - Creo el proyecto akc-loqueaprendihoy
 	- Indico que deseo importar el repositorio de github
 - Acepto las opciones de despliegue por default
@@ -305,6 +316,7 @@ export const collections = { blog };
 - Esto permitirá obtener https://akc-loqueaprendihoy.netlify.app/
 
 ### Custom domain
+
 - Domain management
 	- Production domain
 		- loqueaprendihoy.akcstudio.com
