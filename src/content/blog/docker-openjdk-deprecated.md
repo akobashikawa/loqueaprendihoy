@@ -50,3 +50,5 @@ FROM eclipse-temurin:17-jdk-alpine
 # adaptar cosas como apt-get por apk
 ```
 
+## Links
+- [Docker Deprecation Alert: Why You Should Use Eclipse-Temurin Instead of OpenJDK - YouTube](https://www.youtube.com/watch?v=DRXBR23Y7dU)
